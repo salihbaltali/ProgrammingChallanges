@@ -1,0 +1,18 @@
+saat = int(input("Saat ?"))
+dakika = int(input("Dakika ?"))
+if saat > 12:
+    saat = 12 - (24 - saat) #24'lüğü 12'liğe çevir. Çünkü açının 24-12'likle işi yoktur.
+elif saat == 12: #12'li bir saat girilirse başlangıç noktası 12 olduğundan sıfırlanmalıdır.
+    saat = 0
+saat_aci = saat * 30 + dakika * 0.5  # her saatin arası 30 derece ve yelkovan 1 dakikada akrebi 0.5 derece oynatır.
+dakika_aci = dakika * 6 #Her dakikanın arası 6 derecedir.
+if saat_aci > 180: #180'den büyükse diğer taraf (dış açı) açı olarak hesaplanacak demektir.
+    aci_farklari = saat_aci - dakika_aci #dış açı
+else:
+    aci_farklari = dakika_aci - saat_aci #iç açı
+
+if aci_farklari > 180: #oluşan açı farkı 180'den büyükse
+    gercek_aci = 360 - aci_farklari
+else:
+    gercek_aci = aci_farklari
+print(gercek_aci)
